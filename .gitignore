@@ -50,3 +50,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+*.manifest
+*.resources
+*.pdb
+*.config
+*.cache
+*.Cache
+Debug/
+Release/
