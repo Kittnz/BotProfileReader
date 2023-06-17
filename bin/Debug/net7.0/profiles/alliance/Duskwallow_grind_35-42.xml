@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<EasyQuestProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <QuestsSorted>
+    <QuestsSorted Action="Pulse" NameClass="WitchHill" />
+    <QuestsSorted Action="Pulse" NameClass="Bluefen" />
+    <QuestsSorted Action="Pulse" NameClass="Quagmire" />
+  </QuestsSorted>
+  <NpcQuest />
+  <Npc />
+  <Blackspots>
+    <Blackspot X="-3745.013" Y="-3528.90576" Z="32.0424347" Radius="64.5" />
+    <Blackspot X="-3916.07153" Y="-3483.79028" Z="29.5668125" Radius="64.5" />
+    <Blackspot X="-3949.97534" Y="-3495.2583" Z="30.8818264" Radius="64.5" />
+    <Blackspot X="-4002.0603" Y="-3506.50732" Z="31.4690456" Radius="64.5" />
+    <Blackspot X="-4062.869" Y="-3552.83325" Z="33.5199928" Radius="64.5" />
+    <Blackspot X="-4088.91553" Y="-3583.83545" Z="34.16783" Radius="64.5" />
+    <Blackspot X="-4145.155" Y="-3605.09424" Z="33.4596558" Radius="64.5" />
+    <Blackspot X="-4166.565" Y="-3633.69" Z="32.9217873" Radius="64.5" />
+    <Blackspot X="-4206.54736" Y="-3628.165" Z="32.97382" Radius="64.5" />
+    <Blackspot X="-4238.59863" Y="-3627.551" Z="33.3118477" Radius="64.5" />
+    <Blackspot X="-4284.69238" Y="-3586.31934" Z="32.2853966" Radius="84.5" />
+    <Blackspot X="-4300.938" Y="-3514.23828" Z="30.9575157" Radius="84.5" />
+    <Blackspot X="-4349.175" Y="-3560.67261" Z="39.466404" Radius="84.5" />
+    <Blackspot X="-4392.34668" Y="-3604.08179" Z="30.8723965" Radius="84.5" />
+    <Blackspot X="-4460.59375" Y="-3618.00146" Z="33.0494423" Radius="84.5" />
+    <Blackspot X="-4500.078" Y="-3582.55664" Z="30.9804325" Radius="84.5" />
+    <Blackspot X="-4502.171" Y="-3515.77954" Z="30.3297424" Radius="84.5" />
+    <Blackspot X="-4559.6543" Y="-3469.4978" Z="30.57106" Radius="84.5" />
+    <Blackspot X="-4607.43555" Y="-3426.16382" Z="32.77335" Radius="84.5" />
+    <Blackspot X="-4669.778" Y="-3365.808" Z="31.18918" Radius="84.5" />
+    <Blackspot X="-4584.602" Y="-3314.64136" Z="30.0280571" Radius="84.5" />
+  </Blackspots>
+  <BlackGuids>
+    <string>F1300010F9007B3C</string>
+  </BlackGuids>
+  <EasyQuests>
+    <EasyQuest>
+      <Name>Bluefen</Name>
+      <QuestId />
+      <QuestType>KillAndLoot</QuestType>
+      <QuestClass xsi:type="KillAndLootEasyQuestClass">
+        <HotSpots>
+          <Vector3 X="-2847.139" Y="-2827.428" Z="34.22501" />
+          <Vector3 X="-2792.539" Y="-2797.617" Z="33.6634" />
+          <Vector3 X="-2652.72" Y="-2905.961" Z="34.8477" />
+          <Vector3 X="-2526.609" Y="-2944.253" Z="34.44409" />
+          <Vector3 X="-2549.914" Y="-3068.145" Z="35.13857" />
+          <Vector3 X="-2622.099" Y="-3239.579" Z="30.08232" />
+          <Vector3 X="-2793.382" Y="-3405.53" Z="34.43431" />
+          <Vector3 X="-2859.143" Y="-3277.396" Z="35.07759" />
+        </HotSpots>
+        <EntryTarget>
+          <int>4378</int>
+          <int>4376</int>
+          <int>4379</int>
+          <int>4382</int>
+          <int>4385</int>
+          <int>4341</int>
+          <int>4346</int>
+          <int>4414</int>
+        </EntryTarget>
+        <IsGrinderNotQuest>true</IsGrinderNotQuest>
+      </QuestClass>
+      <ObjectiveCount1>0</ObjectiveCount1>
+      <ObjectiveCount2>0</ObjectiveCount2>
+      <ObjectiveCount3>0</ObjectiveCount3>
+      <ObjectiveCount4>0</ObjectiveCount4>
+      <ObjectiveCount5>0</ObjectiveCount5>
+      <AutoDetectObjectiveCount1>false</AutoDetectObjectiveCount1>
+      <AutoDetectObjectiveCount2>false</AutoDetectObjectiveCount2>
+      <AutoDetectObjectiveCount3>false</AutoDetectObjectiveCount3>
+      <AutoDetectObjectiveCount4>false</AutoDetectObjectiveCount4>
+      <AutoDetectObjectiveCount5>false</AutoDetectObjectiveCount5>
+      <CanCondition />
+      <IsCompleteCondition />
+      <RepeatableQuest>false</RepeatableQuest>
+      <NotRequiredInQuestLog>false</NotRequiredInQuestLog>
+      <PickUpQuestOnItem>false</PickUpQuestOnItem>
+      <PickUpQuestOnItemID>0</PickUpQuestOnItemID>
+      <Comment />
+      <GossipOptionRewardItem>1</GossipOptionRewardItem>
+      <RequiredQuest>0</RequiredQuest>
+      <MaxLevel>39</MaxLevel>
+      <MinLevel>0</MinLevel>
+      <WoWClass>None</WoWClass>
+    </EasyQuest>
+    <EasyQuest>
+      <Name>Witch Hill</Name>
+      <QuestId />
+      <QuestType>KillAndLoot</QuestType>
+      <QuestClass xsi:type="KillAndLootEasyQuestClass">
+        <HotSpots>
+          <Vector3 X="-2570.751" Y="-3464.077" Z="34.30782" />
+          <Vector3 X="-2662.221" Y="-3555.131" Z="34.27491" />
+          <Vector3 X="-2666.63" Y="-3646.094" Z="33.46328" />
+          <Vector3 X="-2724.847" Y="-3774.222" Z="32.92128" />
+          <Vector3 X="-2758.242" Y="-3842.177" Z="37.96624" />
+          <Vector3 X="-2777.077" Y="-3911.793" Z="38.03861" />
+          <Vector3 X="-2778.515" Y="-3991.063" Z="36.61457" />
+          <Vector3 X="-2830.004" Y="-4066.217" Z="36.30002" />
+          <Vector3 X="-2887.041" Y="-4076.02" Z="35.34091" />
+          <Vector3 X="-2940.53" Y="-4071.452" Z="38.64158" />
+          <Vector3 X="-2982.964" Y="-4047.471" Z="32.12341" />
+          <Vector3 X="-3051.881" Y="-4020.859" Z="38.56731" />
+          <Vector3 X="-3108.323" Y="-3994.623" Z="31.03728" />
+          <Vector3 X="-3091.674" Y="-3921.357" Z="41.38219" />
+          <Vector3 X="-3011.676" Y="-3774.352" Z="39.93198" />
+          <Vector3 X="-3052.113" Y="-3680.451" Z="29.02493" />
+          <Vector3 X="-3042.528" Y="-3623.073" Z="29.84692" />
+          <Vector3 X="-2946.492" Y="-3607.659" Z="38.55858" />
+        </HotSpots>
+        <EntryTarget>
+          <int>4352</int>
+          <int>4351</int>
+          <int>23554</int>
+          <int>23555</int>
+        </EntryTarget>
+        <IsGrinderNotQuest>true</IsGrinderNotQuest>
+      </QuestClass>
+      <ObjectiveCount1>0</ObjectiveCount1>
+      <ObjectiveCount2>0</ObjectiveCount2>
+      <ObjectiveCount3>0</ObjectiveCount3>
+      <ObjectiveCount4>0</ObjectiveCount4>
+      <ObjectiveCount5>0</ObjectiveCount5>
+      <AutoDetectObjectiveCount1>false</AutoDetectObjectiveCount1>
+      <AutoDetectObjectiveCount2>false</AutoDetectObjectiveCount2>
+      <AutoDetectObjectiveCount3>false</AutoDetectObjectiveCount3>
+      <AutoDetectObjectiveCount4>false</AutoDetectObjectiveCount4>
+      <AutoDetectObjectiveCount5>false</AutoDetectObjectiveCount5>
+      <CanCondition />
+      <IsCompleteCondition />
+      <RepeatableQuest>false</RepeatableQuest>
+      <NotRequiredInQuestLog>false</NotRequiredInQuestLog>
+      <PickUpQuestOnItem>false</PickUpQuestOnItem>
+      <PickUpQuestOnItemID>0</PickUpQuestOnItemID>
+      <Comment />
+      <GossipOptionRewardItem>1</GossipOptionRewardItem>
+      <RequiredQuest>0</RequiredQuest>
+      <MaxLevel>37</MaxLevel>
+      <MinLevel>0</MinLevel>
+      <WoWClass>None</WoWClass>
+    </EasyQuest>
+    <EasyQuest>
+      <Name>Quagmire</Name>
+      <QuestId />
+      <QuestType>KillAndLoot</QuestType>
+      <QuestClass xsi:type="KillAndLootEasyQuestClass">
+        <HotSpots>
+          <Vector3 X="-4048.873" Y="-2857.155" Z="32.09812" />
+          <Vector3 X="-4001.128" Y="-2831.195" Z="33.22831" />
+          <Vector3 X="-4167.392" Y="-2804.456" Z="28.52284" Type="Swimming" />
+          <Vector3 X="-4154.354" Y="-2920.14" Z="31.14463" />
+          <Vector3 X="-4132.457" Y="-3007.196" Z="28.68063" Type="Swimming" />
+          <Vector3 X="-4102.054" Y="-3098.902" Z="30.44864" />
+          <Vector3 X="-3982.88" Y="-3202.685" Z="30.61827" />
+          <Vector3 X="-3902.951" Y="-3218.914" Z="29.78012" />
+          <Vector3 X="-3818.382" Y="-3192.75" Z="43.26905" />
+          <Vector3 X="-3725.966" Y="-3155.162" Z="40.1301" />
+          <Vector3 X="-3628.032" Y="-3159.551" Z="31.3093" />
+          <Vector3 X="-3634.643" Y="-3091.734" Z="31.61899" />
+        </HotSpots>
+        <EntryTarget>
+          <int>4412</int>
+          <int>4348</int>
+          <int>4344</int>
+          <int>4343</int>
+        </EntryTarget>
+        <IsGrinderNotQuest>true</IsGrinderNotQuest>
+      </QuestClass>
+      <ObjectiveCount1>0</ObjectiveCount1>
+      <ObjectiveCount2>0</ObjectiveCount2>
+      <ObjectiveCount3>0</ObjectiveCount3>
+      <ObjectiveCount4>0</ObjectiveCount4>
+      <ObjectiveCount5>0</ObjectiveCount5>
+      <AutoDetectObjectiveCount1>false</AutoDetectObjectiveCount1>
+      <AutoDetectObjectiveCount2>false</AutoDetectObjectiveCount2>
+      <AutoDetectObjectiveCount3>false</AutoDetectObjectiveCount3>
+      <AutoDetectObjectiveCount4>false</AutoDetectObjectiveCount4>
+      <AutoDetectObjectiveCount5>false</AutoDetectObjectiveCount5>
+      <CanCondition />
+      <IsCompleteCondition />
+      <RepeatableQuest>false</RepeatableQuest>
+      <NotRequiredInQuestLog>false</NotRequiredInQuestLog>
+      <PickUpQuestOnItem>false</PickUpQuestOnItem>
+      <PickUpQuestOnItemID>0</PickUpQuestOnItemID>
+      <Comment />
+      <GossipOptionRewardItem>1</GossipOptionRewardItem>
+      <RequiredQuest>0</RequiredQuest>
+      <MaxLevel>99</MaxLevel>
+      <MinLevel>0</MinLevel>
+      <WoWClass>None</WoWClass>
+    </EasyQuest>
+    <EasyQuest>
+      <Name>Wyrmbog</Name>
+      <QuestId />
+      <QuestType>KillAndLoot</QuestType>
+      <QuestClass xsi:type="KillAndLootEasyQuestClass">
+        <HotSpots>
+          <Vector3 X="-4853.41" Y="-3270.934" Z="34.91673" />
+          <Vector3 X="-4870.458" Y="-3227.995" Z="38.48803" />
+          <Vector3 X="-4904.803" Y="-3335.345" Z="37.71754" />
+          <Vector3 X="-4949.484" Y="-3415.301" Z="37.90188" />
+          <Vector3 X="-4909.561" Y="-3562.386" Z="41.47226" />
+          <Vector3 X="-4981.526" Y="-3733.284" Z="42.93595" />
+          <Vector3 X="-4950.57" Y="-3846.217" Z="42.4425" />
+          <Vector3 X="-4909.551" Y="-3929.717" Z="49.42714" />
+          <Vector3 X="-4787.42" Y="-3982.57" Z="47.18387" />
+          <Vector3 X="-4662.759" Y="-3937.48" Z="41.45186" />
+          <Vector3 X="-4591.075" Y="-3869.897" Z="32.01281" />
+          <Vector3 X="-4584.829" Y="-3771.685" Z="37.88758" />
+          <Vector3 X="-4648.662" Y="-3690.556" Z="42.07095" />
+          <Vector3 X="-4677.81" Y="-3540.29" Z="38.13073" />
+          <Vector3 X="-4818.81" Y="-3620.94" Z="44.14107" />
+          <Vector3 X="-4854.437" Y="-3502.522" Z="37.17225" />
+        </HotSpots>
+        <EntryTarget>
+          <int>4324</int>
+          <int>4331</int>
+          <int>4329</int>
+          <int>4334</int>
+          <int>4328</int>
+          <int>4323</int>
+        </EntryTarget>
+        <IsGrinderNotQuest>true</IsGrinderNotQuest>
+      </QuestClass>
+      <ObjectiveCount1>0</ObjectiveCount1>
+      <ObjectiveCount2>0</ObjectiveCount2>
+      <ObjectiveCount3>0</ObjectiveCount3>
+      <ObjectiveCount4>0</ObjectiveCount4>
+      <ObjectiveCount5>0</ObjectiveCount5>
+      <AutoDetectObjectiveCount1>false</AutoDetectObjectiveCount1>
+      <AutoDetectObjectiveCount2>false</AutoDetectObjectiveCount2>
+      <AutoDetectObjectiveCount3>false</AutoDetectObjectiveCount3>
+      <AutoDetectObjectiveCount4>false</AutoDetectObjectiveCount4>
+      <AutoDetectObjectiveCount5>false</AutoDetectObjectiveCount5>
+      <CanCondition />
+      <IsCompleteCondition />
+      <RepeatableQuest>false</RepeatableQuest>
+      <NotRequiredInQuestLog>false</NotRequiredInQuestLog>
+      <PickUpQuestOnItem>false</PickUpQuestOnItem>
+      <PickUpQuestOnItemID>0</PickUpQuestOnItemID>
+      <Comment />
+      <GossipOptionRewardItem>1</GossipOptionRewardItem>
+      <RequiredQuest>0</RequiredQuest>
+      <MaxLevel>100</MaxLevel>
+      <MinLevel>0</MinLevel>
+      <WoWClass>None</WoWClass>
+    </EasyQuest>
+  </EasyQuests>
+  <Script>
+public class MyCustomScript
+{
+    static MyCustomScript()
+    {
+        // You can put here code to run when bot start, you can also add methods and classes.
+    }
+}
+</Script>
+  <OffMeshConnections />
+</EasyQuestProfile>
