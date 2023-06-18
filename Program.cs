@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using System.Text.RegularExpressions;
 
 namespace BotProfileReader
 {
@@ -26,6 +27,9 @@ namespace BotProfileReader
             sqlBuilder.AppendLine("CREATE TABLE worldbot_grinder_profiles (");
             sqlBuilder.AppendLine("    FileName VARCHAR(255),");
             sqlBuilder.AppendLine("    Name VARCHAR(255),");
+            sqlBuilder.AppendLine("    Faction TEXT,");
+            sqlBuilder.AppendLine("    Race TEXT,");
+            sqlBuilder.AppendLine("    MapId INT,");
             sqlBuilder.AppendLine("    Hotspots TEXT,");
             sqlBuilder.AppendLine("    MinLevel INT,");
             sqlBuilder.AppendLine("    MaxLevel INT,");
@@ -49,6 +53,9 @@ namespace BotProfileReader
             sqlBuilder.AppendLine("    QuestId VARCHAR(255),");
             sqlBuilder.AppendLine("    QuestType VARCHAR(255),");
             sqlBuilder.AppendLine("    QuestClassType VARCHAR(255),");
+            sqlBuilder.AppendLine("    Faction TEXT,");
+            sqlBuilder.AppendLine("    Race TEXT,");
+            sqlBuilder.AppendLine("    MapId INT,");
             sqlBuilder.AppendLine("    HotSpots TEXT,");
             sqlBuilder.AppendLine("    EntryTarget TEXT,");
             sqlBuilder.AppendLine("    IsGrinderNotQuest TEXT,");
@@ -90,6 +97,7 @@ namespace BotProfileReader
                 Console.WriteLine($"Processing XML file: {xmlFile}");
 
                 string outputFileName = Path.GetFileNameWithoutExtension(xmlFile) + ".sql";
+                string fileFolder = Path.GetDirectoryName(xmlFile);
 
                 //string outputPath = Path.Combine(outputFolderPath, outputFileName);
 
@@ -103,7 +111,7 @@ namespace BotProfileReader
                         xmlDoc.Load(reader);
                     }
 
-                    ParseProfile(xmlDoc, outputFileName, sqlBuilder);
+                    ParseProfile(xmlDoc, outputFileName, sqlBuilder, fileFolder);
 
                     File.WriteAllText(outputFile, sqlBuilder.ToString());
                 }
@@ -122,10 +130,12 @@ namespace BotProfileReader
             }
         }
 
-        static void ParseProfile(XmlDocument xmlDoc, string filePath, StringBuilder sqlBuilder)
+        static void ParseProfile(XmlDocument xmlDoc, string filePath, StringBuilder sqlBuilder, string fileFolder)
         {
             string fileName = Path.GetFileNameWithoutExtension(filePath);
             fileName = FixString(fileName);
+
+            //string fileFolder = Path.GetDirectoryName(filePath);
 
             //StringBuilder sqlBuilder = new StringBuilder();
             Console.WriteLine(xmlDoc.DocumentElement.Name);
@@ -151,12 +161,19 @@ namespace BotProfileReader
                     bool notLoop = Convert.ToBoolean(zoneNode.SelectSingleNode("NotLoop")?.InnerText);
 
                     // Generate the INSERT statement for each GrinderZone
-                    sqlBuilder.AppendLine($"INSERT INTO worldbot_grinder_profiles (FileName, Name, Hotspots, MinLevel, MaxLevel, MinTargetLevel, MaxTargetLevel, TargetEntry, TargetFactions, Vectors3, Npc, BlackListRadius, NotLoop) " +
-                        $"VALUES ('{fileName}', '{name}', {hotspots}, {minLevel}, {maxLevel}, {minTargetLevel}, {maxTargetLevel}, '{targetEntry}', '{targetFactions}', '{vectors3}', '{npc}', '{blackListRadius}', {notLoop});");
+                    sqlBuilder.AppendLine($"INSERT INTO worldbot_grinder_profiles (FileName, Name, Faction, Race, MapId, Hotspots, MinLevel, MaxLevel, MinTargetLevel, MaxTargetLevel, TargetEntry, TargetFactions, Vectors3, Npc, BlackListRadius, NotLoop) " +
+                        $"VALUES ('{fileName}', '{name}', 0,  0,  0, {hotspots}, {minLevel}, {maxLevel}, {minTargetLevel}, {maxTargetLevel}, '{targetEntry}', '{targetFactions}', '{vectors3}', '{npc}', '{blackListRadius}', {notLoop});");
                 }
             }
             else if (xmlDoc.DocumentElement.Name == "EasyQuestProfile")
             {
+                XmlNodeList npcNodes = xmlDoc.SelectNodes("//EasyQuestProfile/Npc/Npc");
+                string ContinentId = "";
+                foreach (XmlNode npcNode in npcNodes)
+                {
+                    ContinentId = npcNode.SelectSingleNode("ContinentId")?.InnerText;
+                }
+
                 XmlNodeList questNodes = xmlDoc.SelectNodes("//EasyQuestProfile/EasyQuests/EasyQuest");
                 foreach (XmlNode questNode in questNodes)
                 {
@@ -229,17 +246,61 @@ namespace BotProfileReader
                     string minLevel = questNode.SelectSingleNode("MinLevel")?.InnerText;
                     string wowClass = questNode.SelectSingleNode("WoWClass")?.InnerText;
 
+                    string faction = "";
+                    if (Regex.IsMatch(fileFolder, "horde", RegexOptions.IgnoreCase))
+                        faction = "horde";
+
+                    if (Regex.IsMatch(fileFolder, "alliance", RegexOptions.IgnoreCase))
+                        faction = "alliance";
+
+                    string race = "";
+
+                    if (faction == "horde")
+                        race = "orc";
+
+                    if (faction == "alliance")
+                        race = "human";
+
+                    if (Regex.IsMatch(fileName, "human", RegexOptions.IgnoreCase))
+                        race = "human";
+
+                    int mapid = 0;
+                    if (ContinentId == "Azeroth")
+                        mapid = 0;
+                    if (ContinentId == "Kalimdor")
+                        mapid = 1;
+                    if (ContinentId == "")
+                        mapid = 2;
+
+                    if (Regex.IsMatch(fileName, "undead", RegexOptions.IgnoreCase))
+                    {
+                        mapid = 0;
+                        race = "undead";
+                    }
+
+                    if (Regex.IsMatch(fileName, "tauren", RegexOptions.IgnoreCase))
+                    {
+                        mapid = 1;
+                        race = "tauren";
+                    }
+
+                    if (mapid == 2)
+                    {
+                        if (Regex.IsMatch(fileName, "horde", RegexOptions.IgnoreCase))
+                            mapid = 1;
+                    }
+
                     // Generate the INSERT statement for each EasyQuest
-                    sqlBuilder.AppendLine($"INSERT INTO worldbot_easy_quest_profiles (FileName, Name, QuestId, QuestType, QuestClassType, HotSpots, EntryTarget, IsGrinderNotQuest, " +
-                        $"ObjectiveCount1, ObjectiveCount2, ObjectiveCount3, ObjectiveCount4, ObjectiveCount5, " +
-                        $"AutoDetectObjectiveCount1, AutoDetectObjectiveCount2, AutoDetectObjectiveCount3, AutoDetectObjectiveCount4, AutoDetectObjectiveCount5, " +
-                        $"CanCondition, IsCompleteCondition, RepeatableQuest, NotRequiredInQuestLog, PickUpQuestOnItem, PickUpQuestOnItemID, " +
-                        $"Comment, GossipOptionRewardItem, RequiredQuest, MaxLevel, MinLevel, WoWClass) " +
-                        $"VALUES ('{fileName}', '{name}', '{questId}', '{questType}', '{questClassType}', '{hotSpots}', '{entryTargetResult}', '{isGrinderNotQuest}', " +
-                        $"{objectiveCount1}, {objectiveCount2}, {objectiveCount3}, {objectiveCount4}, {objectiveCount5}, " +
-                        $"{autoDetectObjectiveCount1}, {autoDetectObjectiveCount2}, {autoDetectObjectiveCount3}, {autoDetectObjectiveCount4}, {autoDetectObjectiveCount5}, " +
-                        $"'{canCondition}', '{isCompleteCondition}', {repeatableQuest}, {notRequiredInQuestLog}, {pickUpQuestOnItem}, {pickUpQuestOnItemID}, " +
-                        $"'{comment}', {gossipOptionRewardItem}, {requiredQuest}, {maxLevel}, {minLevel}, '{wowClass}');");
+                    sqlBuilder.AppendLine($"INSERT INTO worldbot_easy_quest_profiles (FileName, Name, QuestId, QuestType, QuestClassType, Faction, Race, MapId, HotSpots, EntryTarget, IsGrinderNotQuest, " +
+                    $"ObjectiveCount1, ObjectiveCount2, ObjectiveCount3, ObjectiveCount4, ObjectiveCount5, " +
+                    $"AutoDetectObjectiveCount1, AutoDetectObjectiveCount2, AutoDetectObjectiveCount3, AutoDetectObjectiveCount4, AutoDetectObjectiveCount5, " +
+                    $"CanCondition, IsCompleteCondition, RepeatableQuest, NotRequiredInQuestLog, PickUpQuestOnItem, PickUpQuestOnItemID, " +
+                    $"Comment, GossipOptionRewardItem, RequiredQuest, MaxLevel, MinLevel, WoWClass) " +
+                    $"VALUES ('{fileName}', '{name}', '{questId}', '{questType}', '{questClassType}', '{faction}', '{race}', {mapid}, '{hotSpots}', '{entryTargetResult}', '{isGrinderNotQuest}', " +
+                    $"{objectiveCount1}, {objectiveCount2}, {objectiveCount3}, {objectiveCount4}, {objectiveCount5}, " +
+                    $"{autoDetectObjectiveCount1}, {autoDetectObjectiveCount2}, {autoDetectObjectiveCount3}, {autoDetectObjectiveCount4}, {autoDetectObjectiveCount5}, " +
+                    $"'{canCondition}', '{isCompleteCondition}', {repeatableQuest}, {notRequiredInQuestLog}, {pickUpQuestOnItem}, {pickUpQuestOnItemID}, " +
+                    $"'{comment}', {gossipOptionRewardItem}, {requiredQuest}, {maxLevel}, {minLevel}, '{wowClass}');");
                 }
             }
             else
